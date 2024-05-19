@@ -248,7 +248,7 @@ body {
     font-size: 1.8vh;
 }
 
-#register-link, #login-link, #fpass-link {
+#register-link, #login-link, #fpass-link, #fpass-link {
     cursor: pointer;
     text-decoration: underline !important;
     color: black;
