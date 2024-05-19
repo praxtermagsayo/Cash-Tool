@@ -168,7 +168,7 @@ body {
     scale: 1.05;
 }
 
-/* Log In Form */
+/* Log In Form - Sign Up Form - Forgot Passwor Form */
 
 .page {
     display: flex;
@@ -200,10 +200,6 @@ body {
 #form-container a{
     color: var(--background);
     text-decoration: none;
-}
-
-#form-container p{
-    font-size: 2rem;
 }
 
 #form-container{
@@ -248,10 +244,10 @@ body {
     font-size: 1.8vh;
 }
 
-#register-link, #login-link, #fpass-link, #fpass-link {
+#register-link, #login-link, #fpass-link, #fpass-link, #login-link2 {
     cursor: pointer;
     text-decoration: underline !important;
     color: black;
     font-weight: bold;
-    font-size: .7rem;
+    font-size: .8rem;
 }
