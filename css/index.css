@@ -243,12 +243,12 @@ body {
     color: black;
 }
 
-#register-btn {
+#register-btn, #login-btn {
     color: black;
     font-size: 1.8vh;
 }
 
-#register-link, #login-link2 {
+#register-link, #login-link {
     cursor: pointer;
     text-decoration: underline !important;
     color: black;
