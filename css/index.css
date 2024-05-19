@@ -248,10 +248,10 @@ body {
     font-size: 1.8vh;
 }
 
-#register-link, #login-link {
+#register-link, #login-link, #fpass-link {
     cursor: pointer;
     text-decoration: underline !important;
     color: black;
     font-weight: bold;
-    font-size: .6rem;
+    font-size: .7rem;
 }
