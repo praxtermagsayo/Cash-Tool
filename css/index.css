@@ -10,6 +10,49 @@
     
 }
 
+@keyframes slide-in {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translate(0%);
+    }
+}
+
+@keyframes drop-in {
+    0% {
+        transform: translateY(-100%);
+    }
+    80%{
+        transform: translateY(1%);
+    }
+    90%{
+        transform: translateY(2%);
+    }
+    100%{
+        transform: translate(0%);
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0%;
+    }
+    60% {
+        transform: translateY(-10%);
+    }
+    80% {
+        transform: translateY(-5%);
+    }
+    95% {
+        transform: translateY(-1%);
+    }
+    50%, 70%, 90%, 100% {
+        transform: translateY(0%);
+        opacity: 100%;
+    }
+}
 
 * {
     font-family: var(--primary-font);
@@ -123,4 +166,92 @@ body {
 
 #login:hover {
     scale: 1.05;
+}
+
+/* Log In Form */
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#header-text {
+    font-size: 3rem;
+    color: var(--background);
+}
+
+#container {
+    display: flex;
+    padding-top: 0px !important;
+    padding: 3rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: max-content;
+    height: max-content;
+
+    animation: bounce-in .3s ease-out forwards;
+}
+
+#form-container a{
+    color: var(--background);
+    text-decoration: none;
+}
+
+#form-container p{
+    font-size: 2rem;
+}
+
+#form-container{
+    display: grid;
+    gap: 1.5vh;
+}
+
+#form-container input{
+    width: 20dvw;
+}
+
+#button-submit{
+    padding: 12px;
+    margin-top: 25px;
+    border-radius: 10px;
+    background: var(--primary);
+    border: none;
+    color: var(--light); 
+    font-weight: bold;
+    font-size: 1.3dvw;
+
+    transition: linear .2s;
+}
+
+#button-submit:hover {
+    scale: 1.05;
+}
+
+#login-input{
+    margin-top: 10px;
+    padding: 12px;
+	background: rgba(170, 148, 148, .52);
+	border: none;
+    border-bottom: #118C4F 3px solid;
+	border-radius: 0;
+	outline: none;
+    color: black;
+}
+
+#register-btn {
+    color: black;
+    font-size: 1.8vh;
+}
+
+#register-link, #login-link2 {
+    cursor: pointer;
+    text-decoration: underline !important;
+    color: black;
+    font-weight: bold;
+    font-size: .6rem;
 }
