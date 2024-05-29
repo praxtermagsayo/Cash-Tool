@@ -1,0 +1,21 @@
+:root {
+    /* Colors */
+    --light: #ffffff;
+    --background: #1D282D;
+    --primary: #118C4F;
+    --secondary: #FFF599;
+    
+    --logo-font: "Jolly Lodger", system-ui;
+    --primary-font: "Inter", sans-serif;
+    
+}
+
+* {
+    font-family: var(--primary-font);
+    color: var(--light);
+}
+
+body {
+    background-color: var(--background);
+    padding: 40px;
+}
