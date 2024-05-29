@@ -1,6 +1,7 @@
 :root {
     /* Colors */
     --light: #eeeeee;
+    --dark: #7a7a7a;
     --background: #1D282D;
     --background-dark: #151c20;
     --primary: #118C4F;
@@ -105,4 +106,55 @@ aside .sidebar {
     height: 88vh;
     position: relative;
     top: 1.5rem;
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    color: var(--dark);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 1.5rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    width: 100%;
+    color: var(--primary);
+    background-color: var(--background-dark);
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--primary);
+}
+
+aside .sidebar a.active span {
+    color: var(--primary);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: var(--primary);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0.6rem;
 }
