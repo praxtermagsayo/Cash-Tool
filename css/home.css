@@ -1,21 +1,108 @@
 :root {
     /* Colors */
-    --light: #ffffff;
+    --light: #eeeeee;
     --background: #1D282D;
+    --background-dark: #151c20;
     --primary: #118C4F;
     --secondary: #FFF599;
     
+    
     --logo-font: "Jolly Lodger", system-ui;
     --primary-font: "Inter", sans-serif;
-    
 }
 
 * {
-    font-family: var(--primary-font);
-    color: var(--light);
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: var(--primary-font);   
+}
+
+html {
+    font-size: 14px;
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow: hidden;
+    color: var(--light);
+    background-color: var(--background-dark);
+}
+
+#logo {
+    font-family: var(--logo-font);
+    font-size: 2rem;
+    margin-bottom: 5rem;
+
+    animation: drop-in .5s ease forwards;
+}
+
+#logo2 {
+    font-family: var(--logo-font);
+    color: var(--secondary);
+}
+
+a{
+    color: var(--light);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 0.87 rem;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+}
+
+aside {
+    height: 100vh;
+}
+
+aside .toggle .logo #logo{
+    font-size: 2rem;
+}
+
+aside .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.4rem;
+}
+
+aside .toggle .close {
+    padding-right: 1rem;
+    display: none;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
     background-color: var(--background);
-    padding: 40px;
+    border-radius: 15px;
+    height: 88vh;
+    position: relative;
+    top: 1.5rem;
 }
