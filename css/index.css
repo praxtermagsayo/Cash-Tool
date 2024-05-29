@@ -248,10 +248,7 @@ body {
 #form-container{
     display: grid;
     gap: 1.5vh;
-}
-
-#form-container input{
-    width: 20dvw;
+    width: 100%;
 }
 
 #button-submit{
@@ -262,7 +259,7 @@ body {
     border: none;
     color: var(--light); 
     font-weight: bold;
-    font-size: 1.3dvw;
+    font-size: 1rem;
 
     transition: linear .2s;
 }
@@ -279,6 +276,7 @@ body {
     border-bottom: #118C4F 3px solid;
 	border-radius: 0;
 	outline: none;
+
     color: black;
 }
 
