@@ -162,3 +162,18 @@ aside .sidebar a:hover {
 aside .sidebar a:hover span {
     margin-left: 0.6rem;
 }
+
+main {
+    margin-top: 1.4rem;
+}
+
+main .money {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+

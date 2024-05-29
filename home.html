@@ -30,13 +30,13 @@
             </div>
 
             <div class="sidebar">
-                <a id="dashboard" href="#" class="active">
+                <a id="dashboard" href="#">
                     <span class="material-symbols-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a id="user-profile" href="#">
+                <a id="user-profile" href="#" class="active">
                     <span class="material-symbols-sharp">
                         person
                     </span>
@@ -56,6 +56,24 @@
                 </a>
             </div>
         </aside>
+
+        <main id="dashboardPage" style="display: none;">
+            <h1>Dashboard</h1>
+            <div class="money">
+                <h2>Current Money: <span id="money"></span></h2>
+
+                <h2>Current Month: <span id="Month"></span></h2>
+            </div>
+        </main>
+
+        <main id="userPage">
+            <h1>User Profile</h1>
+        </main>
+
+        <main id="settingsPage" style="display: none;">
+            <h1>Settings</h1>
+        </main>
+
     </div>
     
 
