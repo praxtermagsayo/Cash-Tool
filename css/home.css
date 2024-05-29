@@ -137,6 +137,8 @@ aside .sidebar a.active {
     color: var(--primary);
     background-color: var(--background-dark);
     margin-left: 0;
+
+    transition: all 0.3s ease;
 }
 
 aside .sidebar a.active::before {
@@ -144,6 +146,8 @@ aside .sidebar a.active::before {
     width: 6px;
     height: 18px;
     background-color: var(--primary);
+
+    transition: all 0.3s ease;
 }
 
 aside .sidebar a.active span {
