@@ -39,11 +39,11 @@
     <section class="page" id="fpass" style="display: none;">
         <div id="container">
             <h1 id="header-text">Forgetful?</h1>
-            <form id="form-container">
+            <form action="php/fpass.php" method="post" id="form-container">
                 <input type="text" id="login-input" name="username" placeholder="Username">
-                <input type="password" id="login-input" name="new password" placeholder="New Password">
-                <input type="password" id="login-input" name="confim password" placeholder="Confirm Password">
-                <button id="button-submit" type="submit">CONFIRM</button>
+                <input type="password" id="login-input" name="npassword" placeholder="New Password">
+                <input type="password" id="login-input" name="cpassword" placeholder="Confirm Password">
+                <button id="button-submit" name="submit" type="submit" value="changepass">CONFIRM</button>
             </form>
             <p id="login-btn">Remembered your password? <a id="login-link">Login here</a></p>
         </div>
