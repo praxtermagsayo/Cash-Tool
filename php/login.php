@@ -14,7 +14,7 @@
                 $_SESSION['password'] = $row['password'];
             } else {
                 echo '<script>
-                    window.location.href = "../index.php"
+                    window.location.href = "../index.html"
                     alert("Login failed. Invalid username or password!")
                     </script>
                     ';
