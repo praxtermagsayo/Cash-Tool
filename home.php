@@ -2,6 +2,17 @@
     session_start();
 
     include("php/connection.php");
+    if(!isset($_SESSION['username'])){
+        header("Location: index.html");
+    }
+
+    $id = $_SESSION['user_id'];
+    $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
+
+    while($result = mysqli_fetch_assoc($sql)){
+        $c_username =  $result['username'];
+        $c_password = $result['password'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +64,7 @@
                     </span>
                     <h3>Settings</h3>
                 </a>
-                <a href="#">
+                <a href="php/logout.php">
                     <span class="material-symbols-sharp">
                         logout
                     </span>
@@ -74,7 +85,9 @@
         <main id="userPage">
             <h1>User Profile</h1>
             <div class="user-info card">
-                
+
+                <h2>Name: <i><?php echo $c_username ?></i></h2>
+                <h2>Password: <i><?php echo $c_password ?></i></h2>
             </div>
         </main>
 

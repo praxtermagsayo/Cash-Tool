@@ -1,4 +1,5 @@
 <?php
+        session_start();
 
         include("connection.php");
         if(isset($_POST['submit'])){
@@ -7,23 +8,23 @@
 
             $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND password = '$password' ") or die("Select Error");
             $row = mysqli_fetch_assoc($result);
-            $count = mysqli_num_rows($result);
 
             if(is_array($row) && !empty($row)){
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['password'] = $row['password'];
+                $_SESSION['user_id'] = $row['user_id'];
             } else {
                 echo '<script>
-                    window.location.href = "../index.html"
+                    window.location.href = "../login.php"
                     alert("Login failed. Invalid username or password!")
                     </script>
                     ';
             }
-            if($count == 1){
+            if(isset($_SESSION['username'])){
                 header("Location: ../home.php");
             } else{
                 echo "  <script>
-                            window.location.href = '../index.php'
+                            window.location.href = '../login.php'
                             alert('Login failed. Invalid username or password!')
                         </script>
                     ";
