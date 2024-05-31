@@ -177,3 +177,9 @@ main .money {
     margin-top: 1rem;
 }
 
+.card {
+    background-color: var(--background);
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 1rem;
+}

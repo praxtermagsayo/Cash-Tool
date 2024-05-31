@@ -68,6 +68,9 @@
 
         <main id="userPage">
             <h1>User Profile</h1>
+            <div class="user-info card">
+                
+            </div>
         </main>
 
         <main id="settingsPage" style="display: none;">
