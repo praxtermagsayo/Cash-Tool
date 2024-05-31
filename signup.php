@@ -18,11 +18,11 @@
     <section class="page" id="signup-page">
         <div id="container">
             <h1 id="header-text">REGISTER</h1>
-            <form id="form-container">
-                <input id="login-input" type="email" placeholder="Username">
-                <input type="password" id="login-input" placeholder="Password">
-                <input type="password" id="login-input" placeholder="Confirm Password">
-                <button id="button-submit" type="submit">REGISTER</button>
+            <form action="php/signup.php" method = "post" id="form-container">
+                <input id="login-input" name = "username" type="text" placeholder="Username">
+                <input type="password" name = "password" id="login-input" placeholder="Password">
+                <input type="password" name = "cpassword" id="login-input" placeholder="Confirm Password">
+                <button id="button-submit" name = "submit" value = "signup" type="submit">REGISTER</button>
             </form>
             <p id="login-btn">Already have an account? <a href="login.php" id="login-link">Login here</a></p>
         </div>

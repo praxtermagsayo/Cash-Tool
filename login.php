@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    include("php/connection.php");
+    if(isset($_SESSION['username'])){
+        header("Location: home.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +30,7 @@
                 <input id="login-input" type="text" name="username" placeholder="Username" required>
                 <input type="password" id="login-input" name="password" placeholder="Password" required>
                 <a id="fpass-link">Forget password?</a>
-                <button id="button-submit" type="submit" name = "submit"value="Login">LOGIN</button>
+                <button id="button-submit" type="submit" name = "submit" value="Login">LOGIN</button>
             </form>
             <p id="register-btn">Don't have an account? <a href="signup.php" id="register-link">Register here</a></p>
         </div>
