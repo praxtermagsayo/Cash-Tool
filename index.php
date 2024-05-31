@@ -14,6 +14,7 @@
     <title>Cash Tool</title>
 </head>
 <body>
+
     <section id="home">
         <p id="logo">Cash<span id="logo2">Tool</span></p>
         <div class="sec">
@@ -40,11 +41,11 @@
     <section class="page" id="login-page" style="display: none;">
         <div id="container">
             <h1 id="header-text">LOGIN</h1>
-            <form id="form-container">
-                <input id="login-input" type="email" placeholder="Username">
-                <input type="password" id="login-input" placeholder="Password">
+            <form action="php/login.php" method="post"  id="form-container">
+                <input id="login-input" type="text" name="username" placeholder="Username" required>
+                <input type="password" id="login-input" name="password" placeholder="Password" required>
                 <a id="fpass-link">Forget password?</a>
-                <button id="button-submit" type="submit">LOGIN</button>
+                <button id="button-submit" type="submit" name = "submit"value="Login">LOGIN</button>
             </form>
             <p id="register-btn">Don't have an account? <a id="register-link">Register here</a></p>
         </div>
