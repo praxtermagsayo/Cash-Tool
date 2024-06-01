@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="img/CS.png">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>">
     <title>Cash Tool</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                     if(mysqli_num_rows($verify_query) != 0){
                         echo "
                             <div class='message'>
-                                <h3>This email is already used</h3>
+                                <h3>This email is already used :(</h3>
                             </div>
                         ";
                         echo "
@@ -45,24 +45,21 @@
 
                             echo "
                                 <div class='message'>
-                                    <p>Account Created!</p>
+                                    <h3>Account Created!</h3>
                                 </div>
                             ";
                         }else {
                             echo "
                                 <div class='message'>
-                                    <p>Password do not match</p>
+                                    <h3>Password do not match</h3>
                                 </div>
-                                <a href='javascript:self.history.back()'></button id='button-submit'>BACK</button></a>
-                                <script>
-                                    alert('PASSWORD')
-                                </script>
+                                <a href='javascript:self.history.back()'><button id='button-submit'>BACK</button></a>
                                 ";
                         }
                                 
                     }
 
-                } else{
+                } else{ 
             ?>
             <form action="" method = "post" id="form-container">
                 <input id="login-input" name = "username" type="text" placeholder="Username">
