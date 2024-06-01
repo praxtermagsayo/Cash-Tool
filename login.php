@@ -28,6 +28,7 @@
             <h1 id="header-text">LOGIN</h1>
             <form action="php/login.php" method="post"  id="form-container">
                 <input id="login-input" type="text" name="username" placeholder="Username" required>
+                <input id="login-input" type="email" name="email" placeholder="Email" required>
                 <input type="password" id="login-input" name="password" placeholder="Password" required>
                 <a id="fpass-link">Forget password?</a>
                 <button id="button-submit" type="submit" name = "submit" value="Login">LOGIN</button>
