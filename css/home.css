@@ -182,4 +182,13 @@ main .money {
     border-radius: 15px;
     padding: 15px;
     margin-top: 1rem;
+    font-size: 1.5rem;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container #userPage .card b {
+    color: var(--secondary);
+
 }

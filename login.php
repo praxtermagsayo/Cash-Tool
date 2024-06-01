@@ -60,6 +60,10 @@
                                 <a href = 'javascript:self.history.back()'><button id = 'button-submit'>BACK</button></a>
                             ";
                         } else {
+                            $_SESSION['user_id'] = $user->user_id;
+                            $_SESSION['username'] = $user->username;
+                            $_SESSION['password'] = $password;
+                            
                             echo "
                                 <script>
                                     window.location.href = 'home.php'

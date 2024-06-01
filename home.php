@@ -2,17 +2,21 @@
     session_start();
 
     include("php/connection.php");
-    if(isset($_SESSION['username'])){
+    if(!isset($_SESSION['username'])){
         header("Location: index.html");
+    } else {
+        $id = $_SESSION['user_id'];
+        $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
+
+        while($result = mysqli_fetch_assoc($sql)){
+            $c_username =  $result['username'];
+            $_SESSION['password'] = str_repeat('*', strlen($_SESSION['password']));
+            $c_password = $_SESSION['password'];
+            $c_email = $result['email'];
+        }
     }
 
-    $id = $_SESSION['user_id'];
-    $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
-
-    while($result = mysqli_fetch_assoc($sql)){
-        $c_username =  $result['username'];
-        $c_password = $result['password'];
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="icon" href="img/CS.png">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css?v=<?php echo time(); ?>">
     <title>Cash Tool - Home</title>
 </head>
 <body>
@@ -85,9 +89,9 @@
         <main id="userPage">
             <h1>User Profile</h1>
             <div class="user-info card">
-
-                <h2>Name: <i><?php echo $c_username ?></i></h2>
-                <h2>Password: <i><?php echo $c_password ?></i></h2>
+                <p>Username: <b><?php echo $c_username ?></b></p>
+                <p>Email: <b><?php echo $c_email ?></b></p>
+                <p>Password: <b><?php echo $c_password ?></b></p>
             </div>
         </main>
 
