@@ -4,15 +4,26 @@
     include("php/connection.php");
     if(!isset($_SESSION['username'])){
         header("Location: index.html");
-    } else {
+    }
+    else {
         $id = $_SESSION['user_id'];
         $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
-
-        while($result = mysqli_fetch_assoc($sql)){
-            $c_username =  $result['username'];
-            $_SESSION['password'] = str_repeat('*', strlen($_SESSION['password']));
-            $c_password = $_SESSION['password'];
-            $c_email = $result['email'];
+        if(mysqli_num_rows($sql) == 0){
+            header("Location: index.html");
+        }else{
+            $user = mysqli_fetch_object($sql);
+            if($user->verification_status != 0){
+                $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
+                while($result = mysqli_fetch_assoc($sql)){
+                    $c_username =  $result['username'];
+                    $_SESSION['password'] = str_repeat('*', strlen($_SESSION['password']));
+                    $c_password = $_SESSION['password'];
+                    $c_email = $result['email'];
+                }
+            }else{
+                session_destroy();
+                header("Location: index.html");
+            }
         }
     }
 

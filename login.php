@@ -25,11 +25,7 @@
     <section class="page" id="login-page">
         <div id="container">
             <h1 id="header-text">LOGIN</h1>
-
             <?php
-
-                include('php/connection.php');
-
                 if(isset($_POST['submit'])){
                     $username = mysqli_real_escape_string($conn, $_POST['username']);
                     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -69,7 +65,6 @@
                                 echo "
                                     <script>
                                         window.location.href = 'home.php'
-                                        alert('Login successful')
                                     </script>
                                 ";
                             }else{
@@ -86,34 +81,17 @@
                         }
                     }
                 } else {
-
             ?>
-
             <form action="" method="post"  id="form-container">
                 <input id="login-input" type="text" name="username" placeholder="Username" required>
                 <input id="login-input" type="email" name="email" placeholder="Email" required>
                 <input type="password" id="login-input" name="password" placeholder="Password" required>
-                <a id="fpass-link">Forget password?</a>
+                <a href="fpass.php" id="fpass-link">Forget password?</a>
                 <button id="button-submit" type="submit" name = "submit" value="Login">LOGIN</button>
             </form>
             <p id="register-btn">Don't have an account? <a href="signup.php" id="register-link">Register here</a></p>
         </div>
     </section>
-    
     <?php } ?>
-    <section class="page" id="fpass" style="display: none;">
-        <div id="container">
-            <h1 id="header-text">Forgetful?</h1>
-            <form action="php/fpass.php" method="post" id="form-container">
-                <input type="text" id="login-input" name="username" placeholder="Username">
-                <input type="password" id="login-input" name="npassword" placeholder="New Password">
-                <input type="password" id="login-input" name="cpassword" placeholder="Confirm Password">
-                <button id="button-submit" name="submit" type="submit" value="changepass">CONFIRM</button>
-            </form>
-            <p id="login-btn">Remembered your password? <a id="login-link">Login here</a></p>
-        </div>
-    </section>
-    
-    <script src="js/login.js"></script>
 </body>
 </html>

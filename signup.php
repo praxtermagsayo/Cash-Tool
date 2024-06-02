@@ -69,7 +69,7 @@
 
                             if($password == $cpassword){
                                 $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-                                mysqli_query($conn, "INSERT INTO users(username, email, password, verification_code) VALUES('$username','$email','$encrypted_password', '$verification_code') ") or die('ERROR OCCURED');
+                                mysqli_query($conn, "INSERT INTO users(username, email, password, verification_code, role) VALUES('$username','$email','$encrypted_password', '$verification_code', 'user') ") or die('ERROR OCCURED');
     
                                 echo "
                                     <div class='message'>

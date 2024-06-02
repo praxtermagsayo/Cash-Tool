@@ -16,7 +16,7 @@
 <body>
     <section class="page">
         <div id="container">
-            <h1>Verify your email</h1>
+            <h1>Verify Change Password</h1>
             <?php
                 session_start();
                 include ('connection.php');
@@ -24,14 +24,16 @@
                 if(isset($_POST['submit'])){
                     $verification_code = $_POST['code'];
                     $email = $_SESSION['email'];
+                    $password = $_SESSION['password'];
                     $sql = "SELECT * FROM users WHERE email = '$email'";
                     $result = mysqli_query($conn, $sql);
                     $user = mysqli_fetch_object($result);
 
                     if($verification_code == $user->verification_code){
-                        $sql = "UPDATE users SET verification_status = '1' WHERE email = '$email'";
+                        $encrpyted_password = password_hash($password, PASSWORD_DEFAULT);
+                        $sql = "UPDATE users SET password = '$encrpyted_password' WHERE email = '$email'";
                         $result = mysqli_query($conn, $sql);
-                        echo "<h1>Email verified!</h1>";
+                        echo "<h1>Password has been changed</h1>";
                         echo "<a href = '../login.php'><button id='button-submit'>PROCEED</button></a>";
                         session_destroy();
                     }else {
@@ -47,7 +49,7 @@
                 <div class="code-input">
                     <input type="text" name="code">
                 </div>
-                <button id="button-submit" type="submit" value="verify" name="submit">SUBMIT</button>
+                <button id="button-submit" type="submit" value="verify" name="submit">CONFRIM CHANGES</button>
             </form>
         </div>
     </section>
