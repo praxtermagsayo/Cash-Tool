@@ -49,7 +49,7 @@
                                 $mail->Password = 'abefwgeiztjjxqwh';
                                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                                 $mail->Port =   587;
-                                $mail->setFrom('wewmaaga@gmail.com', 'CashTool.com');
+                                $mail->setFrom('wewmaaga@gmail.com', 'CashTool');
                                 $mail->addAddress($email, $username);
                                 $mail->isHTML(true);
 

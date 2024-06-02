@@ -47,30 +47,29 @@
                         ";
                     }else {
                         $mail = new PHPMailer(true);
+                        if($password == $cpassword){
+                            try{
+                                $mail->SMTPDebug = 0;
+                                $mail->isSMTP();
+                                $mail->Host = 'smtp.gmail.com';
+                                $mail->SMTPAuth = true;
+                                $mail->Username = 'wewmaaga@gmail.com';
+                                $mail->Password = 'abefwgeiztjjxqwh';
+                                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                                $mail->Port =   587;
+                                $mail->setFrom('wewmaaga@gmail.com', 'CashTool');
+                                $mail->addAddress($email, $username);
+                                $mail->isHTML(true);
 
-                        try{
-                            $mail->SMTPDebug = 0;
-                            $mail->isSMTP();
-                            $mail->Host = 'smtp.gmail.com';
-                            $mail->SMTPAuth = true;
-                            $mail->Username = 'wewmaaga@gmail.com';
-                            $mail->Password = 'abefwgeiztjjxqwh';
-                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                            $mail->Port =   587;
-                            $mail->setFrom('wewmaaga@gmail.com', 'CashTool.com');
-                            $mail->addAddress($email, $username);
-                            $mail->isHTML(true);
+                                $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
 
-                            $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
-
-                            $mail->Subject = 'Email Verification';
-                            $mail->Body = '<p>Dear User, <br>Please verify your email: <b style = "font-size: 20px;">' . $verification_code . '</b></p>';
-                            $mail->send();
-
-                            if($password == $cpassword){
+                                $mail->Subject = 'Email Verification';
+                                $mail->Body = '<p>Dear User, <br>Please verify your email: <b style = "font-size: 20px;">' . $verification_code . '</b></p>';
+                                $mail->send();
+                                
                                 $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
                                 mysqli_query($conn, "INSERT INTO users(username, email, password, verification_code, role) VALUES('$username','$email','$encrypted_password', '$verification_code', 'user') ") or die('ERROR OCCURED');
-    
+        
                                 echo "
                                     <div class='message'>
                                         <h3>Account Created! <br>Please verify your email address</h3>
@@ -79,18 +78,17 @@
                                 echo "
                                     <a href='php/email-verification.php'><button id='button-submit'>Verify Email</button></a>
                                 ";
-                            }else {
-                                echo "
-                                    <div class='message'>
-                                        <h3>Password do not match</h3>
-                                    </div>
-                                    <a href='javascript:self.history.back()'><button id='button-submit'>BACK</button></a>
-                                    ";
+                            }catch (Exception $e){
+                                echo "Message could not be sent. Mailer Error : {$mail->ErrorInfo}";
                             }
-                        }catch (Exception $e){
-                            echo "Message could not be sent. Mailer Error : {$mail->ErrorInfo}";
+                        }else {
+                            echo "
+                                <div class='message'>
+                                    <h3>Password do not match</h3>
+                                </div>
+                                <a href='javascript:self.history.back()'><button id='button-submit'>BACK</button></a>
+                                ";
                         }
-                        
                                 
                     }
 
@@ -99,8 +97,8 @@
             <form action="" method = "post" id="form-container">
                 <input id="login-input" name = "username" type="text" placeholder="Username">
                 <input id="login-input" type="email" name="email" placeholder="Email" required>
-                <input type="password" name = "password" id="login-input" placeholder="Password">
-                <input type="password" name = "cpassword" id="login-input" placeholder="Confirm Password">
+                <input type="password" name = "password" id="login-input" placeholder="Password" required oninvalid = "alert('Password must contain 8 or more characters');" pattern = ".{6,}">
+                <input type="password" name = "cpassword" id="login-input" placeholder="Confirm Password" required>
                 <button id="button-submit" name = "submit" value = "signup" type="submit">REGISTER</button>
             </form>
             <p id="login-btn">Already have an account? <a href="login.php" id="login-link">Login here</a></p>
