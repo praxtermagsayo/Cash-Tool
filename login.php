@@ -59,20 +59,32 @@
                             echo "
                                 <a href = 'javascript:self.history.back()'><button id = 'button-submit'>BACK</button></a>
                             ";
-                        } else {
-                            $_SESSION['user_id'] = $user->user_id;
-                            $_SESSION['username'] = $user->username;
-                            $_SESSION['password'] = $password;
-                            
-                            echo "
-                                <script>
-                                    window.location.href = 'home.php'
-                                    alert('Login successful')
-                                </script>
-                            ";
+                        }else{
+                            if($user->verification_status == 1){
+                                $_SESSION['user_id'] = $user->user_id;
+                                $_SESSION['email'] = $email;
+                                $_SESSION['username'] = $user->username;
+                                $_SESSION['password'] = $password;
+                                
+                                echo "
+                                    <script>
+                                        window.location.href = 'home.php'
+                                        alert('Login successful')
+                                    </script>
+                                ";
+                            }else{
+                                $_SESSION['email'] = $email;
+                                echo "
+                                    <div class = 'message'>
+                                        <h3>Verify your email first</h3>
+                                    </div>
+                                ";
+                                echo "
+                                    <a href='php/email-verification.php'><button id = 'button-submit'>VERIFY</button></a>
+                                ";
+                            }
                         }
                     }
-
                 } else {
 
             ?>

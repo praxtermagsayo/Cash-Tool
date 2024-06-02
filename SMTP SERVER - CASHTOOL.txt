@@ -1,0 +1,7 @@
+SMTP SERVER - CASHTOOL
+
+smtp.gmail.com
+587
+ssl
+username: wewmaaga@gmail.com
+password: abefwgeiztjjxqwh
