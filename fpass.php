@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(isset($_GET['email'])){
+        $email = $_GET['email'];
+    }else{
+        $email = "";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +24,13 @@
 <body>
     <section class="page">
         <div id="container">
-            <h1 id="header-text">Forgetful?</h1>
+            <h1 id="header-text">Change Password?</h1>
             <?php
                 use PHPMailer\PHPMailer\PHPMailer;
                 use PHPMailer\PHPMailer\SMTP;
                 use PHPMailer\PHPMailer\Exception;
 
                 require 'vendor/autoload.php';
-                session_start();
 
                 include ("php/connection.php");
                 if(isset($_POST['submit'])){
@@ -92,7 +99,7 @@
                 }else{
             ?>
             <form action="" method="post" id="form-container">
-                <input type="email" id="login-input" name="email" placeholder="Email" required>
+                <input type="email" id="login-input" value="<?php echo $email ?>" name="email" placeholder="Email" required>
                 <input type="password" id="login-input" name="npassword" placeholder="New Password" required>
                 <input type="password" id="login-input" name="cpassword" placeholder="Confirm Password" required>
                 <button id="button-submit" name="submit" type="submit" value="changepass">CONFIRM</button>

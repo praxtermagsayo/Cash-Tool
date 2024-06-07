@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    $_SESSION['month'] = date('n');
     include("php/connection.php");
     if(isset($_SESSION['username'])){
         header("Location: home.php");
