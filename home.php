@@ -1,15 +1,16 @@
 <?php
     session_start();
-
     include("php/connection.php");
-    if(!isset($_SESSION['username'])){
+
+    if(!isset($_SESSION['user_id'])){
         header("Location: index.html");
     }
     else {
         $id = $_SESSION['user_id'];
         $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
         if(mysqli_num_rows($sql) == 0){
-            header("Location: index.html");
+            session_destroy();
+            header("Location: login.php");
         }else{
             $user = mysqli_fetch_object($sql);
             if($user->verification_status != 0){
@@ -160,7 +161,6 @@
                 $total_income = number_format($total_income, 2);
 
                 $sql = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$id'");
-
                 while($result = mysqli_fetch_assoc($sql)){
                     $c_username =  $result['username'];
                     $_SESSION['password'] = str_repeat('*', strlen($_SESSION['password']));
@@ -474,8 +474,6 @@
 
     <script>
         const currentMonth = new Date().getMonth();
-
-        // Define months
         const months = [
             { name: "January", value: "1" },
             { name: "February", value: "2" },

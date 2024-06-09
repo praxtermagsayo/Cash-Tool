@@ -1,5 +1,12 @@
 <?php
+    session_start();
     include('connection.php');
+
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }else{
+        header('Location: ../home.php');
+    }
 
     $expenseCategories = array(
         "Food",
@@ -242,8 +249,7 @@
         return mt_rand($min * $scale, $max * $scale) / $scale;
     }
 
-    $user_id = 1021;
-    $monnthof = 6;
+    $monnthof = date('n');
 
     $n = random_int(10, 30);
     for($i = 1; $i < $n; $i++){
@@ -252,7 +258,7 @@
             $randomCategory = $expenseCategories[array_rand($expenseCategories)];
             $description = $categoryDescriptions[$randomCategory];
             $randomDescription = $description[array_rand($description)];
-            $randomAmount = generateRandomDecimal(100, 10000, 2);
+            $randomAmount = generateRandomDecimal(100, 1500, 2);
     
             $sql = "INSERT INTO expenses (user_id, expense_date, category, amount, description) VALUES('$user_id', '$randomDate', '$randomCategory', '$randomAmount', '$randomDescription')";
             if ($conn->query($sql) === TRUE) {
@@ -265,12 +271,12 @@
 
     $n = random_int(10, 30);
     for($i = 1; $i < $n; $i++){
-        for($y = 1; $y <=$monnthof6; $y++){
+        for($y = 1; $y <=$monnthof; $y++){
             $randomDate = generateRandomDate(2024, $y);
             $randomSource = $sources[array_rand($sources)];
             $description = $sourceDescriptions[$randomSource];
             $randomDescription = $description[array_rand($description)];
-            $randomAmount = generateRandomDecimal(100, 100000, 2);
+            $randomAmount = generateRandomDecimal(500, 50000, 2);
     
             $sql = "INSERT INTO income (user_id, income_received, source, amount, description) VALUES('$user_id', '$randomDate', '$randomSource', '$randomAmount', '$randomDescription')";
             if ($conn->query($sql) === TRUE) {
@@ -279,5 +285,8 @@
                 echo "Error inserting income record: " . $conn->error . "<br>";
             }
         }
+    }
+    if(isset($_SESSION['user_id'])){
+        header('Location: ../home.php');
     }
 ?>

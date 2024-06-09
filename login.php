@@ -2,9 +2,10 @@
     session_start();
     $_SESSION['month'] = date('n');
     include("php/connection.php");
-    if(isset($_SESSION['username'])){
+
+    if(isset($_SESSION['user_id'])){
         header("Location: home.php");
-    }
+    }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +93,7 @@
             <p id="register-btn">Don't have an account? <a href="signup.php" id="register-link">Register here</a></p>
         </div>
     </section>
-    <?php } ?>
+    <?php }
+    } ?>
 </body>
 </html>
